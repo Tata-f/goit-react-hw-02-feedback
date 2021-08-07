@@ -11,20 +11,12 @@ class App extends Component {
     bad: 0,
   };
 
-  clickOnGood = () => {
-    this.setState({
-      good: this.state.good + 1,
-    });
-  };
-  clickOnNeutral = () => {
-    this.setState({
-      neutral: this.state.neutral + 1,
-    });
-  };
-  clickOnBad = () => {
-    this.setState({
-      bad: this.state.bad + 1,
-    });
+  onRateBtnClick = e => {
+    const name = e.target.name;
+
+    this.setState(() => ({
+      [name]: this.state[name] + 1,
+    }));
   };
 
   countTotalFeedback() {
@@ -34,26 +26,25 @@ class App extends Component {
   }
 
   countPositiveFeedbackPercentage() {
-    const { bad, neutral } = this.state;
-    const positiveFeedback = this.countTotalFeedback() - neutral - bad;
+    const { good } = this.state;
     const positiveFeedbackPercentage = Math.round(
-      (positiveFeedback / this.countTotalFeedback()) * 100,
+      (good / this.countTotalFeedback()) * 100,
     );
     return positiveFeedbackPercentage;
   }
   render() {
     const { good, bad, neutral } = this.state;
-
+    const options = ['good', 'neutral', 'bad'];
     const total = this.countTotalFeedback();
     const positive = this.countPositiveFeedbackPercentage();
-    const onGood = this.clickOnGood;
-    const onNeutral = this.clickOnNeutral;
-    const onBad = this.clickOnBad;
 
     return (
       <>
         <Section>
-          <FeedbackOptions onLeaveFeedback={{ onGood, onNeutral, onBad }} />
+          <FeedbackOptions
+            options={options}
+            onLeaveFeedback={this.onRateBtnClick}
+          />
         </Section>
         <Section>
           {total === 0 ? (
