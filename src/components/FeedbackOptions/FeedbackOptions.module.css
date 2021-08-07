@@ -1,0 +1,23 @@
+.button {
+  min-width: 60px;
+  height: 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgb(218, 49, 201);
+  color: white;
+}
+
+.button:hover {
+  background-color: slateblue;
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+
+  width: 300px;
+}

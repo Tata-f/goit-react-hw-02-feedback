@@ -1,0 +1,22 @@
+.title {
+  font-style: italic;
+}
+
+.subtitle {
+  font-style: italic;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: space-around;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  width: 300px;
+}
